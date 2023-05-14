@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+  labels:
+    name: dev
+---
+apiVersion: elasticweb.elasticweb.com/v1
+kind: ElasticWeb
+metadata:
+  labels:
+    app.kubernetes.io/name: elasticweb
+    app.kubernetes.io/instance: elasticweb-sample
+    app.kubernetes.io/part-of: elasticweb
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: elasticweb
+  namespace: dev
+  name: elasticweb-sample
+spec:
+  # Add fields here
+  image: registry.cn-hangzhou.aliyuncs.com/stylite666/tomcat:8.0.18-jre8
+  port: 30003
+  singlePodQPS: 500
+#  totalQPS: 600
+
